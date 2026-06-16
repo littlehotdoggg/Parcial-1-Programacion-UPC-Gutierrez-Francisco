@@ -1,5 +1,4 @@
 #include "CodexComponent.h"
-#include "Engine/Engine.h" 
 
 UCodexComponent::UCodexComponent()
 {
@@ -11,18 +10,6 @@ void UCodexComponent::RegisterEvidence(FEvidenceData NewEvidence)
 	NewEvidence.bIsCaptured = true;
 	CapturedEvidence.Add(NewEvidence);
 
-	if (GEngine)
-	{
-		FString Mensaje = FString::Printf(TEXT("Evidencia Registrada: %s"), *NewEvidence.EvidenceName);
-
-		
-		GEngine->AddOnScreenDebugMessage(
-			-1,             
-			5.0f,           
-			FColor::Cyan,   
-			Mensaje         
-		);
-	}
-
+	UE_LOG(LogTemp, Warning, TEXT("Evidencia Registrada: %s"), *NewEvidence.EvidenceName);
 	OnEvidenceRecorded.Broadcast(NewEvidence);
 }

@@ -22,4 +22,10 @@ void AEvidenceActor::OnPhotographed()
 {
 	bHasBeenPhotographed = true;
 
+	
+	if (MeshComponent)
+	{
+		MeshComponent->SetVisibility(false);
+		MeshComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	}
 }
